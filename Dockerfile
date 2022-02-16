@@ -21,7 +21,7 @@ RUN npm install
 COPY webpack.config.js autoapp.py ./
 COPY sportblurbsserver sportblurbsserver
 COPY assets assets
-COPY .env.example .env
+COPY .env.prod .env
 RUN npm run-script build
 
 # ================================= PRODUCTION =================================
