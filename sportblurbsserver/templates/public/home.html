@@ -1,35 +1,40 @@
-
 {% extends "layout.html" %}
 {% block content %}
-<!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-    
-      <h1 class="display-3">Welcome to sportblurbsserver</h1>
-    
-      <p>This is a starter Flask template. It includes Bootstrap 4, jQuery 3, Flask-SQLAlchemy, WTForms, and various testing utilities out of the box.</p>
-      <p><a href="https://github.com/cookiecutter-flask/cookiecutter-flask" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <h1 class="display-3">the rotobot</h1>
+        <p>the rotobot is a brilliant fantasy mind delivering the <s>best</s> <i>most</i> fantasy news and analysis
+            you'll find anywhere!</p>
     </div>
-</div><!-- /.jumbotron -->
+</div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-4">
-      <h2><i class="fa fa-code"></i> Bootstrap 4</h2>
-      <p>Sleek, intuitive, and powerful mobile-first front-end framework for faster and easier web development.</p>
-      <p><a class="btn btn-outline-secondary" href="http://getbootstrap.com/">Official website &raquo;</a></p>
+    <div class="row">
+        <div class="col">
+            <!-- div to contain the content -->
+            <div id="scroller" class="mb-3">
+                <!-- template schema, hidden from the dom -->
+                <template id="post_template">
+                    <!-- template content -->
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title" id="title"></h4>
+                            <p class="card-subtitle text-muted font-italic mb-2" style="font-style: italic"
+                               id="date"></p>
+                            <p class="card-text text-muted mb-2" id="news"></p>
+                            <p class="card-text text-muted" id="spin"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- element to trigger the IntersectionObserver -->
+            <div class="d-flex justify-content-center" id="sentinel">
+                <div class="spinner-border" role="status"></div>
+            </div>
+
+        </div>
     </div>
-    <div class="col-lg-4">
-      <h2><i class="fa fa-flask"></i> SQLAlchemy</h2>
-      <p>SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.</p>
-      <p><a href="http://www.sqlalchemy.org/" class="btn btn-outline-secondary">Official website &raquo;</a></p>
-   </div>
-    <div class="col-lg-4">
-      <h2><i class="fa fa-edit"></i> WTForms</h2>
-      <p>WTForms is a flexible forms validation and rendering library for python web development.</p>
-      <p><a href="http://wtforms.simplecodes.com/" class="btn btn-outline-secondary">Official website &raquo;</a></p>
-    </div>
-  </div><!-- /.row -->
 </div>
 {% endblock %}
 
