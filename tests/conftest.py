@@ -7,7 +7,6 @@ import pytest
 from webtest import TestApp
 
 from sportblurbsserver.app import create_app
-from sportblurbsserver.database import db as _db
 
 
 @pytest.fixture
@@ -27,17 +26,3 @@ def app():
 def testapp(app):
     """Create Webtest app."""
     return TestApp(app)
-
-
-@pytest.fixture
-def db(app):
-    """Create database for the tests."""
-    _db.app = app
-    with app.app_context():
-        _db.create_all()
-
-    yield _db
-
-    # Explicitly close DB connection
-    _db.session.close()
-    _db.drop_all()

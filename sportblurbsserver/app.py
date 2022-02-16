@@ -7,12 +7,11 @@ from flask import Flask, render_template
 
 from sportblurbsserver import commands, public
 from sportblurbsserver.extensions import (
-    bcrypt,
     cache,
     csrf_protect,
-    db,
     debug_toolbar,
     flask_static_digest,
+    mongo,
     migrate,
 )
 
@@ -35,12 +34,11 @@ def create_app(config_object="sportblurbsserver.settings"):
 
 def register_extensions(app):
     """Register Flask extensions."""
-    bcrypt.init_app(app)
     cache.init_app(app)
-    db.init_app(app)
+    mongo.init_app(app)
     csrf_protect.init_app(app)
     debug_toolbar.init_app(app)
-    migrate.init_app(app, db)
+    migrate.init_app(app, mongo)
     flask_static_digest.init_app(app)
     return None
 
@@ -70,7 +68,7 @@ def register_shellcontext(app):
 
     def shell_context():
         """Shell context objects."""
-        return {"db": db}
+        return {"mongo": mongo}
 
     app.shell_context_processor(shell_context)
 

@@ -12,6 +12,7 @@ COPY --from=node /usr/lib/ /usr/lib/
 # See https://github.com/moby/moby/issues/37965
 RUN true
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN apt-get update && apt-get install -y git
 COPY requirements requirements
 RUN pip install --no-cache -r requirements/prod.txt
 
